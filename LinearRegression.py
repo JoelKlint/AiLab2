@@ -9,7 +9,6 @@ def regressionBatch(nr_letters, nr_a, language):
     w_1 = 1
     w = np.matrix([w_0, w_1]).T
     nr_iterations = 0
-    #Av någon anledning så stämmer inte funktionen på slides. Alla andra gör på följande sätt
     error = nr_letters*w  - nr_a
     while np.linalg.norm(error) > eps and nr_iterations < 1000:
         error = nr_letters*w -  nr_a
@@ -119,7 +118,7 @@ frBatch, = plt.plot(x, regression_line_batch_french, label='Batch French')
 frStoch, = plt.plot(x, regression_line_stoch_french, label='Stochastic French')
 
 plt.legend([engBatch, engStoch, engData, frBatch, frStoch, frData],
-           ['Batch English', 'Stochastic English', 'English', 'Batch French', 'Stochastic English', 'French'], loc='upper left')
+           ['Batch English', 'Stochastic English', 'English', 'Batch French', 'Stochastic French', 'French'], loc='upper left')
 
 
 
