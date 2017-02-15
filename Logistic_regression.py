@@ -2,12 +2,14 @@ from random import randint
 from math import exp
 import numpy
 import sys
+import matplotlib.pyplot as plt
+
 if (len(sys.argv) > 1):
     version = sys.argv[1].lower()
 else:
     version = 'batch'
 
-print("Version is ", version)
+print("Version is", version)
 
 
 def parse_data():
@@ -55,13 +57,11 @@ examples = parse_data()
 examples = normalization(examples)
 
 
-
 w_0 = 1
 w_1 = 1
 w_2 = 1
 alpha = 1
-number_of_missclassified = 100000000
-eps = 50
+eps = 0.05
 iterations = 0
 w = [w_0, w_1, w_2]
 
@@ -81,31 +81,30 @@ while numpy.linalg.norm(loss(w,examples)) > eps:
 
 
 
-
-
-    w_0_sum = 0
-    w_1_sum = 0
-    w_2_sum = 0
-
     if (version == 'stochastic'):
         rand_i = randint(0,29)
         w_0 = w_0 + alpha*y_diff[rand_i]
         w_1 = w_1 + alpha*examples[rand_i][1]*y_diff[rand_i]
         w_2 = w_2 + alpha*examples[rand_i][2]*y_diff[rand_i]
     else:
-
-        for i in range(len(examples)):
+        w_0_sum = 0
+        w_1_sum = 0
+        w_2_sum = 0
+        q = len(examples)
+        for i in range(q):
             w_0_sum += y_diff[i]
             w_1_sum += examples[i][1]*y_diff[i]
             w_2_sum += examples[i][2]*y_diff[i]
 
-        w_0 = w_0 + alpha*w_0_sum
-        w_1 = w_1 + alpha*w_1_sum
-        w_2 = w_2 + alpha*w_2_sum
+        w_0 = w_0 + (alpha/q)*w_0_sum
+        w_1 = w_1 + (alpha/q)*w_1_sum
+        w_2 = w_2 + (alpha/q)*w_2_sum
+
+    w = [w_0, w_1, w_2]
+    
 
     iterations +=1
     alpha = 1000/(1000 + iterations)
 
 print('Iterations: ', iterations)
-print('The perceptron has set w0=%f w1=%f w2=%f with %f missclassifications' % (w_0, w_1, w_2, number_of_missclassified))
-
+print('The perceptron has set w0=%f w1=%f w2=%f' % (w_0, w_1, w_2))
