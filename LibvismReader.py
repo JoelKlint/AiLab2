@@ -10,7 +10,7 @@ def readFile(file, langValue):
     return out
 
 english = open('english.txt', 'r')
-eng_res = readFile(english, '+1')
+eng_res = readFile(english, '1')
 english.close()
 
 writer = open('english_formated.txt', 'w')
