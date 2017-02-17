@@ -2,7 +2,6 @@ from random import randint
 from math import exp
 import numpy
 import sys
-import matplotlib.pyplot as plt
 
 if (len(sys.argv) > 1):
     version = sys.argv[1].lower()

@@ -1,6 +1,4 @@
-import matplotlib.pyplot as plt
 import numpy as np
-import pylab as pl
 
 def regressionBatch(nr_letters, nr_a, language):
     eps = 0.1
@@ -110,16 +108,22 @@ regression_line_stoch_french = regression_line_stoch_french.T
 
 
 #Plotting data
-engData = plt.scatter(nr_letters_english, nr_a_english, c='r', label='English')
-engBatch, = plt.plot(x, regression_line_batch_english, label='Batch English')
-engStoch, = plt.plot(x, regression_line_stoch_english, label='Stochastic English')
-frData = plt.scatter(nr_letters_french, nr_a_french, c='y', label='French')
-frBatch, = plt.plot(x, regression_line_batch_french, label='Batch French')
-frStoch, = plt.plot(x, regression_line_stoch_french, label='Stochastic French')
+import sys
+if (len(sys.argv) > 1):
+    if(sys.argv[1].lower() == 'plot'):
 
-plt.legend([engBatch, engStoch, engData, frBatch, frStoch, frData],
-           ['Batch English', 'Stochastic English', 'English', 'Batch French', 'Stochastic French', 'French'], loc='upper left')
+        print("Will plot")
+        import matplotlib.pyplot as plt
+        engData = plt.scatter(nr_letters_english, nr_a_english, c='r', label='English')
+        engBatch, = plt.plot(x, regression_line_batch_english, label='Batch English')
+        engStoch, = plt.plot(x, regression_line_stoch_english, label='Stochastic English')
+        frData = plt.scatter(nr_letters_french, nr_a_french, c='y', label='French')
+        frBatch, = plt.plot(x, regression_line_batch_french, label='Batch French')
+        frStoch, = plt.plot(x, regression_line_stoch_french, label='Stochastic French')
+
+        plt.legend([engBatch, engStoch, engData, frBatch, frStoch, frData],
+                ['Batch English', 'Stochastic English', 'English', 'Batch French', 'Stochastic French', 'French'], loc='upper left')
 
 
 
-plt.show()
+        plt.show()
