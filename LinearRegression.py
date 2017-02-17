@@ -1,7 +1,7 @@
 import numpy as np
 
 def regressionBatch(nr_letters, nr_a, language):
-    eps = 0.1
+    eps = 0.0001
     alpha = 0.95
     w_0 = 1
     w_1 = 1
@@ -20,7 +20,7 @@ def regressionBatch(nr_letters, nr_a, language):
     return w
 
 def regressionStochastic(nr_letters, nr_a, language):
-    eps = 0.01
+    eps = 0.0001
     alpha = 0.95
     w_0 = 1
     w_1 = 1
