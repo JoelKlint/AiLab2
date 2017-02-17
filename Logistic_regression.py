@@ -61,7 +61,7 @@ w_0 = 1
 w_1 = 1
 w_2 = 1
 alpha = 1
-eps = 0.05
+eps = 0.018
 iterations = 0
 w = [w_0, w_1, w_2]
 
@@ -107,4 +107,5 @@ while numpy.linalg.norm(loss(w,examples)) > eps:
     alpha = 1000/(1000 + iterations)
 
 print('Iterations: ', iterations)
-print('The perceptron has set w0=%f w1=%f w2=%f' % (w_0, w_1, w_2))
+print('epsilon: ', eps)
+print('The Logistic Regression has set w0=%f w1=%f w2=%f' % (w_0, w_1, w_2))
