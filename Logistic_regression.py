@@ -59,8 +59,8 @@ examples = normalization(examples)
 w_0 = 1
 w_1 = 1
 w_2 = 1
-alpha = 1
-eps = 0.018
+alpha = 0.001
+eps = 0.1
 iterations = 0
 w = [w_0, w_1, w_2]
 
@@ -95,9 +95,9 @@ while numpy.linalg.norm(loss(w,examples)) > eps:
             w_1_sum += examples[i][1]*y_diff[i]
             w_2_sum += examples[i][2]*y_diff[i]
 
-        w_0 = w_0 + (alpha/q)*w_0_sum
-        w_1 = w_1 + (alpha/q)*w_1_sum
-        w_2 = w_2 + (alpha/q)*w_2_sum
+        w_0 = w_0 + alpha*w_0_sum
+        w_1 = w_1 + alpha*w_1_sum
+        w_2 = w_2 + alpha*w_2_sum
 
     w = [w_0, w_1, w_2]
     
